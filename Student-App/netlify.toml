@@ -4,3 +4,8 @@
   
   # Netlify will ONLY host the contents of this folder. Your PHP files are completely locked out.
   publish = "dist"
+
+[[redirects]]
+  from ="/*"
+  to ="/index.html"
+  status =200
