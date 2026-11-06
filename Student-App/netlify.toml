@@ -1,0 +1,6 @@
+[build]
+  # Builds Vite first, then deletes the backend folder from Netlify's temporary workspace
+  command = "npm run build && rm -rf backend" 
+  
+  # Netlify will ONLY host the contents of this folder. Your PHP files are completely locked out.
+  publish = "dist"
