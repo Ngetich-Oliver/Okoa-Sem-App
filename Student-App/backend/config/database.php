@@ -1,6 +1,17 @@
 <?php
 declare(strict_types=1);
 
+$envFile= __DIR__ . '/../.env';
+if (file_exists($envFile)) {
+    $lines= file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    for($i= 0; $i < count($lines); $i++) {
+        if (strpos(trim($lines[$i]), '#') === 0) {
+            continue;
+        }
+        [$name, $value] = explode('=', $lines[$i], 2);
+        putenv(sprintf('%s=%s', trim($name), trim($value)));
+    }
+}
 function getDatabaseConnection(): PDO
 {
     $host = getenv('DB_HOST') ?: '127.0.0.1';

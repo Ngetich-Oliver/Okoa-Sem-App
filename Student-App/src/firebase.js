@@ -15,15 +15,7 @@ const getFirebaseConfig = () => {
   };
 
   if (!config.apiKey || !config.authDomain || !config.projectId || !config.appId) {
-    console.warn("Firebase env vars are missing. Using a safe demo fallback.");
-    return {
-      apiKey: "AIzaSyDemoKeyForGoogleAuthUIPreviewOnly",
-      authDomain: "demo-google-login.firebaseapp.com",
-      projectId: "demo-google-login",
-      storageBucket: "demo-google-login.appspot.com",
-      messagingSenderId: "1234567890",
-      appId: "1:1234567890:web:demo1234567890",
-    };
+    throw new Error("Missing Firebase configuration. Please check your environment variables.");
   }
 
   return config;
